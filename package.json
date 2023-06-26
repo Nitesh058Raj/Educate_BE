@@ -1,0 +1,29 @@
+{
+  "name": "educate_be",
+  "version": "1.0.0",
+  "description": "Back-End application for Educate product.",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "set DEBUG=app & node src/index.js",
+    "dev": "set DEBUG=app & nodemon src/index.js",
+    "debug": "set DEBUG=* & nodemon src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nitesh058Raj/Educate_BE.git"
+  },
+  "keywords": [],
+  "author": "Nitesh Raj, Vinay Gupta",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nitesh058Raj/Educate_BE/issues"
+  },
+  "homepage": "https://github.com/Nitesh058Raj/Educate_BE#readme",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "debug": "^4.3.4",
+    "express": "^4.18.2",
+    "nodemon": "^2.0.22"
+  }
+}
