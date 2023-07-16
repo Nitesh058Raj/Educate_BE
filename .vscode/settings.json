@@ -1,7 +1,7 @@
 {
   "eslint.validate": ["typescript", "javascript"],
   "files.autoSave": "afterDelay",
-  "files.autoSaveDelay": 5000,
+  "files.autoSaveDelay": 8000,
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[html]": {
