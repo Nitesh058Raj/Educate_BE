@@ -7,13 +7,13 @@ export const getAllAssignment = (req, res) => {
     if (err) {
       debugLog(err);
       return res.send({
-        message: "Error occurred while retrieving assignments",
+        message: "Error occurred while retrieving assignments.",
         statusCode: 500,
         status: "Internal Server Error",
       });
     }
     return res.send({
-      message: "Assignments retrieved successfully",
+      message: "Assignments retrieved successfully!",
       statusCode: 200,
       status: "OK",
       data: results,
