@@ -20,8 +20,8 @@ import {
 const routes = express.Router();
 
 routes.route("/schools").get(getAllSchoolController);
+routes.route("/school").post(createSchoolController);
 routes.route("/school/:sid").get(getSchoolController);
-routes.route("/create-school").post(createSchoolController);
 
 routes.route("/resources").post(createResource);
 routes.route("/resources/:cid").get(getAllResource);

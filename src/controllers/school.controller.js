@@ -22,7 +22,6 @@ export const getAllSchoolController = (req, res) => {
 };
 
 export const getSchoolController = (req, res) => {
-  //debugLog(req.body);
   database.query(Query.SCHOOL.GET_SINGLE, [req.params.sid], (err, results) => {
     if (err) {
       debugLog(err);
