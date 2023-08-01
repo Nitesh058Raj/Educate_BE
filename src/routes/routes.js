@@ -16,9 +16,11 @@ import {
   getAllSchoolController,
   getSchoolController,
 } from "../controllers/school.controller.js";
+import { getAllAnnouncements } from "../controllers/announcement.controller.js";
 
 const routes = express.Router();
 
+routes.route("/announcements").get(getAllAnnouncements);
 routes.route("/schools").get(getAllSchoolController);
 routes.route("/school").post(createSchoolController);
 routes.route("/school/:sid").get(getSchoolController);
