@@ -1,9 +1,10 @@
 export const Query = {
   SCHOOL: {
     CREATE:
-      "INSERT INTO schools(SchoolName, SchoolAddress, DistrictID) VALUES (?, ?, ?)",
+      "INSERT INTO schools(schoolName, schoolAddress, districtID) VALUES (?, ?, ?)",
     GET_ALL: "SELECT * FROM schools",
-    GET_SINGLE: "SELECT * FROM schools WHERE SchoolID = ?",
+    GET_ALL_FROM_DISTRICT_ID: "SELECT * FROM schools WHERE districtID = ?",
+    GET_SINGLE: "SELECT * FROM schools WHERE schoolID = ?",
   },
   USER: {
     CREATE:

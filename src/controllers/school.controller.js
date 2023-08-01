@@ -21,6 +21,25 @@ export const getAllSchoolController = (req, res) => {
   });
 };
 
+export const getAllSchoolFromDistrictIdController = (req, res) => {
+  database.query(Query.SCHOOL.GET_ALL_FROM_DISTRICT_ID, [req.params.did], (err, results) => {
+    if (err) {
+      debugLog(err);
+      return res.send({
+        message: "Error occurred while retrieving schools.",
+        statusCode: 500,
+        status: "Internal Server Error",
+      });
+    }
+    return res.send({
+      message: "Schools retrieved successfully!",
+      statusCode: 200,
+      status: "OK",
+      data: results,
+    });
+  });
+}
+
 export const getSchoolController = (req, res) => {
   database.query(Query.SCHOOL.GET_SINGLE, [req.params.sid], (err, results) => {
     if (err) {
