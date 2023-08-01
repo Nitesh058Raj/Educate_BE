@@ -14,12 +14,14 @@ import {
 import {
   createSchoolController,
   getAllSchoolController,
+  getAllSchoolFromDistrictIdController,
   getSchoolController,
 } from "../controllers/school.controller.js";
 
 const routes = express.Router();
 
 routes.route("/schools").get(getAllSchoolController);
+routes.route("/schools/:did").get(getAllSchoolFromDistrictIdController);
 routes.route("/school").post(createSchoolController);
 routes.route("/school/:sid").get(getSchoolController);
 
