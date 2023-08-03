@@ -23,7 +23,7 @@ export const Query = {
     DELETE: "DELETE FROM classes WHERE classID = ?",
     GET_SINGLE:
       "SELECT className, classDescription FROM classes WHERE classID = ?",
-    GET_CLASS_NAME: "SELECT className FROM classes WHERE teacherID = ?",
+    GET_CLASS_NAME: "SELECT classID, className FROM classes WHERE teacherID = ?",
     GET_STUDENT_LIST:
       "SELECT s.studentID, s.studentName, s.email, s.contact, c.classID FROM students s JOIN classStudents cs ON s.studentID = cs.studentID JOIN classes c ON cs.classID = c.classID WHERE c.classID = ?",
   },
