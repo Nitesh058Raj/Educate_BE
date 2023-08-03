@@ -8,47 +8,47 @@ export const Query = {
   },
   USER: {
     CREATE:
-      "INSERT INTO users(UserName, UserPassword, UserRole) VALUES (?, ?, ?)",
+      "INSERT INTO users(userName, userPassword, userRole) VALUES (?, ?, ?)",
     GET_ALL: "SELECT * FROM users",
-    GET_SINGLE: "SELECT * FROM users WHERE UserID = ?",
+    GET_SINGLE: "SELECT * FROM users WHERE userID = ?",
   },
   ANNOUNCEMENT: {
-    CREATE: "INSERT INTO announcements(Content) VALUES (?)",
+    CREATE: "INSERT INTO announcements(content) VALUES (?)",
     GET_ALL: "SELECT * FROM announcements",
-    GET_SINGLE: "SELECT * FROM announcements WHERE AnnouncementID = ?",
+    GET_SINGLE: "SELECT * FROM announcements WHERE announcementID = ?",
   },
   CLASS: {
     CREATE:
-      "INSERT INTO classes(ClassName, ClassDescription, TeacherID, SchoolID) VALUES (?, ?, ?, ?)",
-    DELETE: "DELETE FROM classes WHERE ClassID = ?",
+      "INSERT INTO classes(className, classDescription, teacherID, schoolID) VALUES (?, ?, ?, ?)",
+    DELETE: "DELETE FROM classes WHERE classID = ?",
     GET_SINGLE:
-      "SELECT ClassName, ClassDescription FROM classes WHERE ClassID = ?",
-    GET_CLASS_NAME: "SELECT ClassName FROM classes WHERE TeacherID = ?",
+      "SELECT className, classDescription FROM classes WHERE classID = ?",
+    GET_CLASS_NAME: "SELECT classID, className FROM classes WHERE teacherID = ?",
     GET_STUDENT_LIST:
-      "SELECT s.StudentID, s.StudentName, s.Email, s.Contact, c.ClassID FROM Students s JOIN ClassStudents cs ON s.StudentID = cs.StudentID JOIN Classes c ON cs.ClassID = c.ClassID WHERE c.ClassID = ?",
+      "SELECT s.studentID, s.studentName, s.email, s.contact, c.classID FROM students s JOIN classStudents cs ON s.studentID = cs.studentID JOIN classes c ON cs.classID = c.classID WHERE c.classID = ?",
   },
   STUDENT: {
     GET_ALL: "SELECT * FROM students",
-    GET_SINGLE: "SELECT * FROM students WHERE StudentID = ?",
-    GET_WITH_UID: "SELECT * FROM students WHERE UserID = ?",
+    GET_SINGLE: "SELECT * FROM students WHERE studentID = ?",
+    GET_WITH_UID: "SELECT * FROM students WHERE userID = ?",
   },
   TEACHER: {
     GET_ALL: "SELECT * FROM teachers",
-    GET_SINGLE: "SELECT * FROM teachers WHERE TeacherID = ?",
-    GET_WITH_UID: "SELECT * FROM teachers WHERE UserID = ?",
+    GET_SINGLE: "SELECT * FROM teachers WHERE teacherID = ?",
+    GET_WITH_UID: "SELECT * FROM teachers WHERE userID = ?",
   },
   RESOURCE: {
     CREATE:
-      "INSERT INTO resources(ClassID, ResourceName, ResourceUrl) VALUES (?, ?, ?)",
-    GET_WITH_CID: "SELECT * FROM resources WHERE ClassID = ?",
-    GET_SINGLE: "SELECT * FROM resources WHERE ResourceID = ?",
+      "INSERT INTO resources(classID, resourceName, resourceUrl) VALUES (?, ?, ?)",
+    GET_WITH_CID: "SELECT * FROM resources WHERE classID = ?",
+    GET_SINGLE: "SELECT * FROM resources WHERE resourceID = ?",
   },
   ASSIGNMENT: {
-    GET_ALL: "SELECT * FROM assignments WHERE ClassID = ?",
-    GET_SINGLE: "SELECT * FROM assignments WHERE AssignmentID = ?",
+    GET_ALL: "SELECT * FROM assignments WHERE classID = ?",
+    GET_SINGLE: "SELECT * FROM assignments WHERE assignmentID = ?",
   },
   HELPANDSUPPORT: {
     GET_ALL: "SELECT * FROM helpandsupport",
-    GET_SINGLE: "SELECT * FROM helpandsupport WHERE HelpAndSupportID = ?",
+    GET_SINGLE: "SELECT * FROM helpandsupport WHERE helpAndSupportID = ?",
   },
 };
