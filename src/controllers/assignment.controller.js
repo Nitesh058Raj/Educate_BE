@@ -20,3 +20,26 @@ export const getAllAssignment = (req, res) => {
     });
   });
 };
+
+export const getAssignmentCount = (req, res) => {
+  database.query(
+    Query.ASSIGNMENT.GET_COUNT,
+    [req.params.cid],
+    (err, results) => {
+      if (err) {
+        debugLog(err);
+        return res.send({
+          message: "Error occurred while retrieving assignments.",
+          statusCode: 500,
+          status: "Internal Server Error",
+        });
+      }
+      return res.send({
+        message: "Assignment Count retrieved successfully!",
+        statusCode: 200,
+        status: "OK",
+        data: results,
+      });
+    }
+  );
+};
