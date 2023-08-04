@@ -1,5 +1,9 @@
 import express from "express";
-import { getAllAssignment } from "../controllers/assignment.controller.js";
+import { getAllAnnouncements } from "../controllers/announcement.controller.js";
+import {
+  getAllAssignment,
+  getAssignmentCount,
+} from "../controllers/assignment.controller.js";
 import {
   createClass,
   deleteClass,
@@ -17,7 +21,6 @@ import {
   getAllSchoolFromDistrictIdController,
   getSchoolController,
 } from "../controllers/school.controller.js";
-import { getAllAnnouncements } from "../controllers/announcement.controller.js";
 
 const routes = express.Router();
 
@@ -37,5 +40,6 @@ routes.route("/class/student-list/:cid").get(getStudentList);
 routes.route("/class/delete/:cid").get(deleteClass);
 
 routes.route("/assignment/:cid").get(getAllAssignment);
+routes.route("/assignment/count/:cid").get(getAssignmentCount);
 
 export default routes;
