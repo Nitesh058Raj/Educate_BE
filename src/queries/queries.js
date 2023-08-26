@@ -11,6 +11,10 @@ export const Query = {
       "INSERT INTO users(userName, userPassword, userRole) VALUES (?, ?, ?)",
     GET_ALL: "SELECT * FROM users",
     GET_SINGLE: "SELECT * FROM users WHERE userID = ?",
+    GET_ALL_INFO_WITH_USERNAME_AND_PASSWORD_FOR_TEACHER:
+      "SELECT t.teacherID, t.teacherName, t.email, t.contact, s.districtID, t.schoolID, u.userName, u.userRole FROM teachers AS t JOIN users AS u ON t.userID = u.userID JOIN schools AS s ON t.schoolID = s.schoolID WHERE u.userName = ? AND u.userPassword = ? ",
+    GET_ALL_INFO_WITH_USERNAME_AND_PASSWORD_FOR_STUDENT:
+      "SELECT s.studentID, s.studentName, s.email, s.contact, sc.districtID, s.schoolID, u.userName, u.userRole FROM students AS s JOIN users AS u ON s.userID = u.userID JOIN schools AS sc ON s.schoolID = sc.schoolID WHERE u.userName = ? AND u.userPassword = ? ",
   },
   ANNOUNCEMENT: {
     CREATE: "INSERT INTO announcements(content) VALUES (?)",
@@ -21,6 +25,8 @@ export const Query = {
     CREATE:
       "INSERT INTO classes(className, classDescription, teacherID, schoolID) VALUES (?, ?, ?, ?)",
     DELETE: "DELETE FROM classes WHERE classID = ?",
+    UPDATE:
+      "UPDATE classes SET className = ?, classDescription = ? WHERE classID = ?",
     GET_SINGLE:
       "SELECT className, classDescription FROM classes WHERE classID = ?",
     GET_CLASS_NAME:

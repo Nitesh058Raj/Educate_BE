@@ -10,6 +10,7 @@ import {
   getClass,
   getClassName,
   getStudentList,
+  updateClass,
 } from "../controllers/class.controller.js";
 import {
   createResource,
@@ -22,7 +23,19 @@ import {
   getSchoolController,
 } from "../controllers/school.controller.js";
 
+import {
+  createUser,
+  getUser,
+  getUserInfoForStudent,
+  getUserInfoForTeacher,
+} from "../controllers/user.controller.js";
+
 const routes = express.Router();
+
+routes.route("/user").post(createUser);
+routes.route("/user/:uid").get(getUser);
+routes.route("/user/login/teacher").post(getUserInfoForTeacher);
+routes.route("/user/login/student").post(getUserInfoForStudent);
 
 routes.route("/announcements").get(getAllAnnouncements);
 routes.route("/schools").get(getAllSchoolController);
@@ -35,6 +48,7 @@ routes.route("/resources/:cid").get(getAllResource);
 
 routes.route("/class").post(createClass);
 routes.route("/class/:cid").get(getClass);
+routes.route("/class/:cid").put(updateClass);
 routes.route("/classes/:tid").get(getClassName);
 routes.route("/class/student-list/:cid").get(getStudentList);
 routes.route("/class/delete/:cid").get(deleteClass);
