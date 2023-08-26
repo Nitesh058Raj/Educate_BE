@@ -125,3 +125,31 @@ export const getStudentList = (req, res) => {
     }
   );
 };
+
+export const updateClass = (req, res) => {
+  database.query(
+    Query.CLASS.UPDATE,
+    [req.body.className, req.body.classDescription, req.params.cid],
+    (err, results) => {
+      if (err) {
+        debugLog(err);
+        return res.send({
+          message: "Error occurred while updating class.",
+          statusCode: 500,
+          status: "Internal Server Error",
+        });
+      } else if (results.affectedRows === 0) {
+        return res.send({
+          message: "Class not found.",
+          statusCode: 404,
+          status: "Not Found",
+        });
+      }
+      return res.send({
+        message: "Class updated successfully!",
+        statusCode: 200,
+        status: "OK",
+      });
+    }
+  );
+};
