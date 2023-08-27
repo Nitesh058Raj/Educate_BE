@@ -73,7 +73,7 @@ export const getAssignment = (req, res) => {
   );
 };
 
-export const createASsignment = (req, res) => {
+export const createAssignment = (req, res) => {
   database.query(
     Query.ASSIGNMENT.CREATE,
     Object.values(req.body),

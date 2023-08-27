@@ -3,7 +3,7 @@ import { getAllAnnouncements } from "../controllers/announcement.controller.js";
 import {
   getAllAssignment,
   getAssignmentCount,
-  createASsignment,
+  createAssignment,
   getAssignment,
 } from "../controllers/assignment.controller.js";
 import {
@@ -57,7 +57,7 @@ routes.route("/class/delete/:cid").get(deleteClass);
 
 routes.route("/assignment/:cid").get(getAllAssignment);
 routes.route("/assignment/count/:cid").get(getAssignmentCount);
-routes.route("/assignment").post(createASsignment);
+routes.route("/assignment").post(createAssignment);
 routes.route("/assignment/:aid").get(getAssignment);
 
 export default routes;
