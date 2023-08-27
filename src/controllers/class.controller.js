@@ -34,6 +34,13 @@ export const createClass = (req, res) => {
     (err, results) => {
       if (err) {
         debugLog(err);
+        if (err.code === "ER_DUP_ENTRY") {
+          return res.send({
+            message: "Class already exists.",
+            statusCode: 409,
+            status: "Conflict",
+          });
+        }
         return res.send({
           message: "Error occurred while creating class.",
           statusCode: 500,

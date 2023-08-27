@@ -43,3 +43,62 @@ export const getAssignmentCount = (req, res) => {
     }
   );
 };
+
+export const getAssignment = (req, res) => {
+  database.query(
+    Query.ASSIGNMENT.GET_SINGLE,
+    [req.params.aid],
+    (err, results) => {
+      if (err) {
+        debugLog(err);
+        return res.send({
+          message: "Error occurred while retrieving assignment.",
+          statusCode: 500,
+          status: "Internal Server Error",
+        });
+      } else if (results.length === 0) {
+        return res.send({
+          message: "Assignment not found.",
+          statusCode: 404,
+          status: "Not Found",
+        });
+      }
+      return res.send({
+        message: "Assignment retrieved successfully!",
+        statusCode: 200,
+        status: "OK",
+        data: results,
+      });
+    }
+  );
+};
+
+export const createAssignment = (req, res) => {
+  database.query(
+    Query.ASSIGNMENT.CREATE,
+    Object.values(req.body),
+    (err, results) => {
+      if (err) {
+        debugLog(err);
+        if (err.code === "ER_DUP_ENTRY") {
+          return res.send({
+            message: "Assignment already exists.",
+            statusCode: 409,
+            status: "Conflict",
+          });
+        }
+        return res.send({
+          message: "Error occurred while creating assignment.",
+          statusCode: 500,
+          status: "Internal Server Error",
+        });
+      }
+      return res.send({
+        message: "Assignment created successfully!",
+        statusCode: 201,
+        status: "Created",
+        data: results,
+      });
+    }
+  );
+};

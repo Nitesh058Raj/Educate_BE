@@ -51,6 +51,8 @@ export const Query = {
     GET_SINGLE: "SELECT * FROM resources WHERE resourceID = ?",
   },
   ASSIGNMENT: {
+    CREATE:
+      "INSERT INTO assignments(classID, assignmentName, assignmentDescription, assignmentDueDate, assignmentStatus) VALUES (?, ?, ?, ?, ?)",
     GET_ALL: "SELECT * FROM assignments WHERE classID = ?",
     GET_SINGLE: "SELECT * FROM assignments WHERE assignmentID = ?",
     GET_COUNT:
