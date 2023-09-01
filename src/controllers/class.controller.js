@@ -35,7 +35,7 @@ export const createClass = (req, res) => {
       if (err) {
         debugLog(err);
         if (err.code === "ER_DUP_ENTRY") {
-          return res.send({
+          return res.status(409).send({
             message: "Class already exists.",
             statusCode: 409,
             status: "Conflict",
@@ -61,13 +61,13 @@ export const deleteClass = (req, res) => {
   database.query(Query.CLASS.DELETE, [req.params.cid], (err, results) => {
     if (err) {
       debugLog(err);
-      return res.send({
+      return res.status(500).send({
         message: "Error occurred while deleting class.",
         statusCode: 500,
         status: "Internal Server Error",
       });
     } else if (results.affectedRows === 0) {
-      return res.send({
+      return res.status(404).send({
         message: "Class not found.",
         statusCode: 404,
         status: "Not Found",
@@ -140,6 +140,13 @@ export const updateClass = (req, res) => {
     (err, results) => {
       if (err) {
         debugLog(err);
+        if (err.code === "ER_DUP_ENTRY") {
+          return res.status(409).send({
+            message: "Class already exists.",
+            statusCode: 409,
+            status: "Conflict",
+          });
+        }
         return res.send({
           message: "Error occurred while updating class.",
           statusCode: 500,

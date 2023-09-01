@@ -51,9 +51,9 @@ routes.route("/resources/:cid").get(getAllResource);
 routes.route("/class").post(createClass);
 routes.route("/class/:cid").get(getClass);
 routes.route("/class/:cid").put(updateClass);
+routes.route("/class/:cid").delete(deleteClass);
 routes.route("/classes/:tid").get(getClassName);
 routes.route("/class/student-list/:cid").get(getStudentList);
-routes.route("/class/delete/:cid").get(deleteClass);
 
 routes.route("/assignment/:cid").get(getAllAssignment);
 routes.route("/assignment/count/:cid").get(getAssignmentCount);
