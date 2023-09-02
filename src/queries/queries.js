@@ -49,6 +49,7 @@ export const Query = {
       "INSERT INTO resources(classID, resourceName, resourceUrl) VALUES (?, ?, ?)",
     GET_WITH_CID: "SELECT * FROM resources WHERE classID = ?",
     GET_SINGLE: "SELECT * FROM resources WHERE resourceID = ?",
+    DELETE: "DELETE FROM resources WHERE resourceID = ?",
   },
   ASSIGNMENT: {
     CREATE:

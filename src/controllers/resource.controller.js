@@ -76,3 +76,22 @@ export const createResource = (req, res) => {
     }
   );
 };
+
+export const deleteResource = (req, res) => {
+  database.query(Query.RESOURCE.DELETE, [req.params.rid], (err, results) => {
+    if (err) {
+      debugLog(err);
+      return res.send({
+        message: "Error occurred while deleting resource.",
+        statusCode: 500,
+        status: "Internal Server Error",
+      });
+    }
+    return res.send({
+      message: "Resource deleted successfully!",
+      statusCode: 200,
+      status: "OK",
+      data: results,
+    });
+  });
+};

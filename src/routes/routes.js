@@ -17,6 +17,7 @@ import {
 import {
   createResource,
   getAllResource,
+  deleteResource,
 } from "../controllers/resource.controller.js";
 import {
   createSchoolController,
@@ -45,8 +46,9 @@ routes.route("/schools/:did").get(getAllSchoolFromDistrictIdController);
 routes.route("/school").post(createSchoolController);
 routes.route("/school/:sid").get(getSchoolController);
 
-routes.route("/resources").post(createResource);
+routes.route("/resource").post(createResource);
 routes.route("/resources/:cid").get(getAllResource);
+routes.route("/resource/:rid").delete(deleteResource);
 
 routes.route("/class").post(createClass);
 routes.route("/class/:cid").get(getClass);
